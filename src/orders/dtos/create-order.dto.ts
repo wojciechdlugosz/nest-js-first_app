@@ -1,10 +1,12 @@
 /* eslint-disable prettier/prettier */
 import { Transform } from 'class-transformer';
-import { IsNotEmpty, IsString } from 'class-validator';
-import { Product } from 'src/db';
+import { IsNotEmpty, IsString, IsUUID } from 'class-validator';
+import { Product } from '@prisma/client';
 
 export class CreateOrderDTO {
   @IsNotEmpty()
+  @IsUUID()
+  @IsString()
   productId: Product['id'];
 
   @IsNotEmpty()
